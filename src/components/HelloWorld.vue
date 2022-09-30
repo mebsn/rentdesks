@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <div class="login" @click="goToLogin">Login</div>
-    <div class="register">Register</div>
+    <div class="login" @click="goToLogin()">Login</div>
+    <div class="register" @click="goToRegister()">Register</div>
   <div class="text"> welcome to desk rent company :)</div> 
   </div>
 </template>
@@ -12,6 +12,9 @@ export default {
   methods: {
     goToLogin() {
       this.$router.push({ path: "/login" });
+    },
+    goToRegister(){
+      alert("we are working on this");
     }
   }
 }
