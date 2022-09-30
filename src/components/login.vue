@@ -3,7 +3,7 @@
     <div class="credentials">enter username</div>
     <input type="text" placeholder="username" v-model="username"/>
     <div class="credentials">enter password</div>
-    <input type="text" placeholder="password" v-model="password"/>
+    <input type="password" placeholder="password" v-model="password"/>
     <div class="signIn" @click="signIn()">sign in</div>
   </div>
 </template>
@@ -22,6 +22,16 @@ export default {
     signIn(){
         if ( this.username == null|| this.password == null) {
             alert("fill the fields");
+        } else if (this.username == "user" && this.password == "user"){
+            window.localStorage.setItem("userRole" , this.$store.state.users.users[0].role)
+            this.$store.state.users.users[0].status = true;
+            this.$router.push({ path: "/home" });
+        } else if (this.username == "admin" && this.password == "admin") {
+            window.localStorage.setItem("userRole" , this.$store.state.users.users[1].role)
+            this.$store.state.users.users[1].status = true;
+            this.$router.push({ path: "/home" });
+        } else {
+          alert("something is incorrect");
         }
     }
   }
@@ -36,6 +46,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 .credentials {
     color:black;

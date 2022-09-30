@@ -1,9 +1,8 @@
 const users = {
   state: {
     users: [
-      { username: "user", password: "user", role: "client" },
-      { username: "manager", password: "manager", role: "manager" },
-      { username: "admin", password: "admin", role: "admin" },
+      { username: "user", password: "user", role: "client", status:false},
+      { username: "admin", password: "admin", role: "admin", status:false },
     ],
   },
   mutations: {},
