@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    welcome to desk rent company :)
-    <div class="login" @click="goToLogin()">Login</div>
+    <div class="login" @click="goToLogin">Login</div>
     <div class="register">Register</div>
+  <div class="text"> welcome to desk rent company :)</div> 
   </div>
 </template>
 
@@ -37,5 +37,10 @@ export default {
   align-items:center;
   margin-top:20px;
   cursor:pointer;
+}
+.text {
+  margin-top:50px;
+  font-size:28px;
+  color:black;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="welcome">wellcome {{ msg }}</div>
-    <div class="bigTable">
+    <div class="bigTable" v-if="showBigRoomForUser">
       <div>Big Room</div>
       <div class="desks"
         v-for="desk in bigRoomDesks"
@@ -14,7 +14,7 @@
         location:{{desk.location}}
       </div>
     </div>
-    <div class="bigTable">
+    <div class="bigTable" v-if="showSmallRoomForUser">
       <div>Small Room</div>
       <div class="desks"
         v-for="desk in smallRoomDesks"
@@ -42,10 +42,20 @@ export default {
       smallRoomDesks: this.$store.state.desks.desks.filter(
         (desk) => desk.place == "smallRoom"
       ),
+      showBigRoomForUser: true,
+      showSmallRoomForUser:true,
     };
   },
-  created() {
-    console.log(this.bigRoomDesks);
+  mounted() {
+    const isAvailable = (currentValue) => currentValue.istaken == true;
+    let statusBigRoom = this.bigRoomDesks.every(isAvailable);
+    let statusSmallRoom = this.smallRoomDesks.every(isAvailable);
+    console.log(statusSmallRoom);
+    if ((localStorage.getItem("userRole") == "client") && statusBigRoom == true) {
+      this.showBigRoomForUser = false;
+    } else if ((localStorage.getItem("userRole") == "client") && statusSmallRoom == true) {
+      this.showSmallRoomForUser = false;
+    }
   },
 };
 </script>
