@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="welcome">wellcome {{ msg.username }}</div>
+    <div class="welcome">wellcome to desk ren service -  {{ msg.username }}</div>
     <div class="option" v-if="isAdmin" @click="goToDesks()">desks</div>
     <div class="bigTable" v-if="showBigRoomForUser">
       <div>Big Room</div>
@@ -9,7 +9,7 @@
           desk.size
         }}
         price:{{ desk.price }} location:{{ desk.location }}
-        <button
+        <button class="button"
           @click="
             desk.istaken == false
               ? rentDesk(desk.id, desk.price)
@@ -27,7 +27,7 @@
           desk.size
         }}
         price:{{ desk.price }} location:{{ desk.location }}
-        <button
+        <button class="button"
           @click="
             desk.istaken == false
               ? rentDesk(desk.id, desk.price)
@@ -97,7 +97,7 @@ export default {
 <style scoped>
 .container {
   width: 100%;
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -107,22 +107,29 @@ export default {
 }
 .bigTable {
   margin-top: 50px;
-  border: 2px solid black;
+  /* border: 2px solid black; */
 }
 .desks {
   margin-top: 5px;
   border: 2px solid black;
+  display:flex;
+  justify-content: space-between;
 }
 .option {
-  margin-top: 10px;
+  margin-top: 30px;
   margin-bottom: 10px;
   width: 80px;
   background-color: blue;
   height: 30px;
   color: white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  border-radius:6px;
+  cursor: pointer;
 }
 .logout {
-  margin-top: 200px;
+  margin-top: 100px;
   width: 120px;
   height: 40px;
   border-radius: 6px;
@@ -131,5 +138,9 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.button {
+  margin-left:10px;
+  cursor:pointer;
 }
 </style>

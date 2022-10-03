@@ -47,7 +47,7 @@ export default {
 <style scoped>
 .container {
   width: 100%;
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -56,15 +56,16 @@ export default {
 .credentials {
   color: black;
   margin-bottom: 10px;
-  margin-top: 10px;
+  margin-top: 50px;
 }
 input {
   width: 120px;
   height: 40px;
   border-radius: 6px;
+  padding-left:10px;
 }
 .signIn {
-  margin-top: 20px;
+  margin-top: 40px;
   width: 100px;
   height: 35px;
   border-radius: 4px;
@@ -72,5 +73,6 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor:pointer;
 }
 </style>
