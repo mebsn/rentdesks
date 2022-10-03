@@ -87,7 +87,7 @@ export default {
     },
     rentDesk(x,y,z) {
       window.localStorage.setItem("dynamicRoute" , JSON.stringify(z))
-      this.$router.push({name:"details",  path: `/details/${y}/${x}` });
+      this.$router.push({  path: `/details/${y}/desk/${x}` });
     }
   },
 };

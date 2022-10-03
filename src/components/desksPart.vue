@@ -5,7 +5,7 @@
       <div class="desks" v-for="desk in desks" :key="desk.id">
         id:{{ desk.id }} available: {{ desk.istaken }} size:{{
           desk.size
-        }}
+        }}place: {{desk.place}}
         price:{{ desk.price }} location:{{ desk.location }}
         <button class="button"
           @click="remove(desk.id)">Remove desk from list</button>
