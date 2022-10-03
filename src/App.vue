@@ -6,10 +6,14 @@
 
 <script>
 export default {
-  name: 'App',
-  components: {
-  }
-}
+  name: "App",
+  components: {},
+  mounted() {
+    window.onbeforeunload = function () {
+      localStorage.clear();
+    };
+  },
+};
 </script>
 
 <style>

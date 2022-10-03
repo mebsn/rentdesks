@@ -7,7 +7,7 @@
       <div class="info">price of desk: {{desk.price}}</div>
       <div class="info">location of desk: {{desk.location}}</div>
       <div class="info">size of desk: {{desk.size}}</div>
-      <div class="options"><div class="option">Rent</div><div  class="option" @click="homepage()">homepage</div></div>
+      <div class="options"><div class="option" @click="rent()">Rent</div><div  class="option" @click="homepage()">homepage</div></div>
     </div>
   </template>
   
@@ -26,6 +26,9 @@
     methods: {
         homepage(){
             this.$router.push({path: "/home"});
+        },
+        rent() {
+          alert("procces of renting desk starts now!")
         }
     }
   };
