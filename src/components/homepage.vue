@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <div class="welcome">wellcome to desk ren service -  {{ msg.username }}</div>
-    <div class="option" v-if="isAdmin" @click="goToDesks()">desks</div>
+    <div class="welcome">wellcome to desk rent service -  {{ msg.username }}</div>
+    <div class="option" v-if="isAdmin" @click="goToDesks()">Admin Panel</div>
     <div class="bigTable" v-if="showBigRoomForUser">
       <div>Big Room</div>
       <div class="desks" v-for="desk in bigRoomDesks" :key="desk.id">
@@ -12,11 +12,11 @@
         <button class="button"
           @click="
             desk.istaken == false
-              ? rentDesk(desk.id, desk.price)
+              ? rentDesk(desk.id, desk.place, desk)
               : blockedDesk(desk.id);
           "
         >
-          {{ desk.istaken == false ? "Rent Desk" : "blocked" }}
+          {{ desk.istaken == false ? "view details" : "blocked" }}
         </button>
       </div>
     </div>
@@ -34,7 +34,7 @@
               : blockedDesk(desk.id);
           "
         >
-          {{ desk.istaken == false ? "Rent Desk" : "blocked" }}
+          {{ desk.istaken == false ? "view details" : "blocked" }}
         </button>
       </div>
     </div>
@@ -75,7 +75,7 @@ export default {
   },
   methods: {
     goToDesks() {
-      this.$router.push({ path: "/desks" });
+      this.$router.push({ path: "/adminPanel" });
     },
     logout() {
       localStorage.removeItem("user");
@@ -85,9 +85,9 @@ export default {
     blockedDesk(x) {
       alert("desk with id " + x +" is already in use");
     },
-    rentDesk(x,y) {
-      alert("you have booked desk with id - " + x + "and price " + y );
-      this.$store.state.desks.desks[x].istaken = true;
+    rentDesk(x,y,z) {
+      window.localStorage.setItem("dynamicRoute" , JSON.stringify(z))
+      this.$router.push({name:"details",  path: `/details/${y}/${x}` });
     }
   },
 };
@@ -118,7 +118,7 @@ export default {
 .option {
   margin-top: 30px;
   margin-bottom: 10px;
-  width: 80px;
+  width: 120px;
   background-color: blue;
   height: 30px;
   color: white;
